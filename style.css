@@ -1,0 +1,74 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    margin-top: 40px;
+    color: #2d3748;
+    letter-spacing: 2px;
+}
+#sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    grid-template-rows: repeat(9, 40px);
+    gap: 2px;
+    margin: 30px 0 20px 0;
+    background: #cbd5e1;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.sudoku-cell {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2em;
+    border: 1px solid #94a3b8;
+    background: #fff;
+    outline: none;
+    transition: background 0.2s, border 0.2s;
+}
+.sudoku-cell:focus {
+    background: #e0e7ef;
+    border: 2px solid #2b6cb0;
+}
+.sudoku-cell.prefilled {
+    background: #e2e8f0;
+    color: #2b6cb0;
+    font-weight: bold;
+}
+.sudoku-cell.invalid {
+    background: #feb2b2;
+}
+.sudoku-cell.valid {
+    background: #c6f6d5;
+}
+#message {
+    font-size: 1.1em;
+    color: #2d3748;
+    margin-bottom: 16px;
+    min-height: 24px;
+}
+.controls {
+    margin-bottom: 16px;
+}
+button {
+    padding: 8px 22px;
+    font-size: 1em;
+    background: #2b6cb0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: background 0.2s;
+}
+button:hover {
+    background: #2c5282;
+}
