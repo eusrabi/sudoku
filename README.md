@@ -23,6 +23,24 @@ sudoku/
 
 ---
 
+## 🏗️ How the Program Works
+
+- **index.html**  
+  This file provides the structure of the game, including the title, level selection dropdown, control buttons, the Sudoku board container, and a message area. It links to `style.css` for styling and `app.js` for game logic.
+
+- **style.css**  
+  This file styles the game, making the board visually appealing and user-friendly. It defines the grid layout, colors, borders for 3x3 boxes, highlights for valid/invalid entries, and button styles.
+
+- **app.js**  
+  This file contains all the game logic:
+  - Stores Sudoku puzzles for each difficulty level.
+  - Dynamically generates the board based on the selected level.
+  - Handles user input and validates entries in real time.
+  - Provides functions to check the solution, reset the board, and switch levels.
+  - Highlights mistakes and correct entries for better interactivity.
+
+---
+
 ## 🚀 How to Run
 
 1. Download or clone this repository.
