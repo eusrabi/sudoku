@@ -7,11 +7,17 @@
 </head>
 <body>
     <h1>Sudoku</h1>
-    <div id="sudoku-board"></div>
     <div class="controls">
+        <label for="level">Select Level:</label>
+        <select id="level" onchange="changeLevel()">
+            <option value="beginner">Beginner</option>
+            <option value="medium">Medium</option>
+            <option value="advanced">Advanced</option>
+        </select>
         <button onclick="checkSolution()">Check Solution</button>
         <button onclick="resetBoard()">Reset</button>
     </div>
+    <div id="sudoku-board"></div>
     <p id="message"></p>
     <script src="app.js"></script>
 </body>

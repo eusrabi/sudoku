@@ -1,18 +1,44 @@
-const initialBoard = [
-    [5, 3, '', '', 7, '', '', '', ''],
-    [6, '', '', 1, 9, 5, '', '', ''],
-    ['', 9, 8, '', '', '', '', 6, ''],
-    [8, '', '', '', 6, '', '', '', 3],
-    [4, '', '', 8, '', 3, '', '', 1],
-    [7, '', '', '', 2, '', '', '', 6],
-    ['', 6, '', '', '', '', 2, 8, ''],
-    ['', '', '', 4, 1, 9, '', '', 5],
-    ['', '', '', '', 8, '', '', 7, 9]
-];
+const boards = {
+    beginner: [
+        [5, 3, '', '', 7, '', '', '', ''],
+        [6, '', '', 1, 9, 5, '', '', ''],
+        ['', 9, 8, '', '', '', '', 6, ''],
+        [8, '', '', '', 6, '', '', '', 3],
+        [4, '', '', 8, '', 3, '', '', 1],
+        [7, '', '', '', 2, '', '', '', 6],
+        ['', 6, '', '', '', '', 2, 8, ''],
+        ['', '', '', 4, 1, 9, '', '', 5],
+        ['', '', '', '', 8, '', '', 7, 9]
+    ],
+    medium: [
+        ['', '', '', 2, 6, '', 7, '', 1],
+        [6, 8, '', '', 7, '', '', 9, ''],
+        [1, 9, '', '', '', 4, 5, '', ''],
+        [8, 2, '', 1, '', '', '', 4, ''],
+        ['', '', 4, 6, '', 2, 9, '', ''],
+        ['', 5, '', '', '', 3, '', 2, 8],
+        ['', '', 9, 3, '', '', '', 7, 4],
+        ['', 4, '', '', 5, '', '', 3, 6],
+        [7, '', 3, '', 1, 8, '', '', '']
+    ],
+    advanced: [
+        ['', '', '', '', '', '', '', '', ''],
+        [2, '', '', 3, '', '', '', '', ''],
+        ['', '', 1, '', 9, 5, '', '', ''],
+        ['', '', '', '', '', '', '', 7, 8],
+        ['', '', '', '', '', '', '', '', ''],
+        [1, '', '', '', '', '', '', '', ''],
+        ['', '', '', 6, '', '', '', '', ''],
+        ['', '', '', '', '', '', 4, 1, 9],
+        ['', '', '', '', 8, '', '', '', 5]
+    ]
+};
 
+let initialBoard;
 let board = [];
 const boardDiv = document.getElementById('sudoku-board');
 const message = document.getElementById('message');
+const levelSelect = document.getElementById('level');
 
 function createBoard() {
     boardDiv.innerHTML = '';
@@ -42,6 +68,7 @@ function createBoard() {
         }
     }
     message.textContent = '';
+    message.style.color = '#2d3748';
 }
 
 function onInput(cell, r, c) {
@@ -61,12 +88,10 @@ function onInput(cell, r, c) {
 }
 
 function isValid(row, col, val) {
-    // Check row and column
     for (let i = 0; i < 9; i++) {
         if (i !== col && board[row][i].value === val) return false;
         if (i !== row && board[i][col].value === val) return false;
     }
-    // Check 3x3 box
     const boxRow = Math.floor(row / 3) * 3;
     const boxCol = Math.floor(col / 3) * 3;
     for (let r = boxRow; r < boxRow + 3; r++) {
@@ -118,4 +143,14 @@ function resetBoard() {
     message.style.color = '#2d3748';
 }
 
-createBoard();
+function changeLevel() {
+    const level = levelSelect.value;
+    initialBoard = boards[level];
+    createBoard();
+}
+
+// Initialize the board based on the selected level on page load
+window.onload = function() {
+    initialBoard = boards[levelSelect.value];
+    createBoard();
+};
